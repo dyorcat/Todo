@@ -27,9 +27,9 @@ class CardController(
     fun getCards(): ResponseEntity<List<CardResponse>> {
         return ResponseEntity.status(HttpStatus.OK).body(cardService.getCards())
     }
-    @GetMapping("/{cardId}")
-    fun getCard(@PathVariable cardId: Long): ResponseEntity<CardResponse> {
-        return ResponseEntity.status(HttpStatus.OK).body(cardService.getCard(cardId))
+    @GetMapping("/{cardid}")
+    fun getCard(@PathVariable cardid: Long): ResponseEntity<CardResponse> {
+        return ResponseEntity.status(HttpStatus.OK).body(cardService.getCard(cardid))
     }
 
     // RequestBody 어노테이션은 요청 DTO를 표기할 때 사용. 클라이언트로 요청받은 Json을 객체로 매핑해줌.
@@ -41,16 +41,16 @@ class CardController(
             .body(cardService.createCard(createCardRequest))
     }
 
-    @PutMapping("/{cardId}")
-    fun updateCard(@PathVariable cardId: Long, @RequestBody updateCardRequest: UpdateCardRequest): ResponseEntity<CardResponse> {
+    @PutMapping("/{cardid}")
+    fun updateCard(@PathVariable cardid: Long, @RequestBody updateCardRequest: UpdateCardRequest): ResponseEntity<CardResponse> {
         return ResponseEntity
             .status(HttpStatus.OK)
-            .body(cardService.updateCard(cardId, updateCardRequest))
+            .body(cardService.updateCard(cardid, updateCardRequest))
     }
 
-    @DeleteMapping("/{cardId}")
-    fun deleteCard(@PathVariable cardId: Long): ResponseEntity<Unit> {
-        cardService.deleteCard(cardId)
+    @DeleteMapping("/{cardid}")
+    fun deleteCard(@PathVariable cardid: Long): ResponseEntity<Unit> {
+        cardService.deleteCard(cardid)
         return ResponseEntity
             .status(HttpStatus.NO_CONTENT) // 204
             .build()

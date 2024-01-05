@@ -11,7 +11,7 @@ import java.util.Date
 
 @Entity
 @Table(name = "card")
-class CardEntity(
+class Card(
     @Column(name = "title")
     var title: String,
 
@@ -21,23 +21,23 @@ class CardEntity(
     @Column(name = "nickname")
     var nickname: String,
 
-    @Column(name = "day")
-    var day: Date
+    @Column(name = "cardday")
+    var cardday: Date
 ) {
 
 
-    fun CardEntity.toResponse(): CardResponse {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 데이터베이스에 위임해서 id를 자동생성한다. 그래서 nullable
+    var cardid: Long? = null
+
+    fun toResponse(): CardResponse {
         return CardResponse(
-            id = id!!,
+            cardid = cardid!!,
             title = title,
             content = content,
             nickname = nickname,
-            day = day
+            cardday = cardday
         )
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 데이터베이스에 위임해서 id를 자동생성한다. 그래서 nullable
-    var id: Long? = null
 
 }

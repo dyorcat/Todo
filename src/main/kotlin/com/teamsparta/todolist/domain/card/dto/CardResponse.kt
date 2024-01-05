@@ -8,9 +8,10 @@ import java.util.Date
 // 구조 분해 선언 및 패턴 매칭과 같은 기능을 활용할 수 있게 한다.
 
 data class CardResponse(
-    val id: Long, // 고유 identifier. immutable함
+    val cardid: Long, // 고유 identifier. immutable함
     val title: String, // 할 일 제목. 필수
     val content: String?, // 할 일 내용. 필수 아니라서 nullable하게 설정
-    val name: String, // 작성자 이름
-    val day: Date
+    val nickname: String, // 작성자 이름
+    val cardday: Date
 )
+
